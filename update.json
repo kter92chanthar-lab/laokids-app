@@ -1,5 +1,5 @@
 {
-  "versionCode": 1,
+  "versionCode": 4,
   "versionName": "2.0.$vCode",
   "apkUrl": "https://github.com/kter92chanthar-lab/laokids-app/releases/download/v2.0.$vCode/base.1.apk",
   "forceUpdate": true,
