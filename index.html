@@ -72,13 +72,35 @@ footer a{
 <h1>ແອັບຮຽນພາສາລາວ ກ-ຮ (Lao Kids)</h1>
 
 <p>
-ສື່ການຮຽນພາສາລາວສຳລັບເດັກນ້ອຍ ມີພະຍັນຊະນະ, ສະຫຼະ, ຕົວເລກ ແລະ ເກມການຮຽນຮູ້ ໂດຍ: ອຈ ຄຳຈັນທາ ຍິນບາໂຮງ
+ສື່ການຮຽນພາສາລາວສຳລັບເດັກນ້ອຍ ມີພະຍັນຊະນະ, ສະຫຼະ, ຕົວເລກ ແລະ ເກມການຮຽນຮູ້ ໂດຍ:ອຈ ຄຳຈັນທາ ຍິນບາໂຮງ
 </p>
     
-<a class="btn"
+<a class="btn" id="downloadBtn"
 href="https://github.com/kter92chanthar-lab/laokids-app/releases/latest/download/base.apk">
 ⬇️ Download APK
 </a>
+
+<script>
+document.getElementById('downloadBtn').addEventListener('click', function(e){
+  var apkUrl = "https://github.com/kter92chanthar-lab/laokids-app/releases/latest/download/base.apk";
+  var isAndroid = /Android/i.test(navigator.userAgent);
+
+  if (isAndroid) {
+    e.preventDefault();
+    var cleanUrl = apkUrl.replace(/^https?:\/\//, '');
+    var intentUrl = "intent://" + cleanUrl + "#Intent;scheme=https;package=com.android.chrome;end";
+
+    // ลองเปิดผ่าน Chrome ก่อน
+    window.location.href = intentUrl;
+
+    // ถ้า Chrome ไม่มีในเครื่อง ให้ fallback กลับไปโหลดแบบปกติ
+    setTimeout(function(){
+      window.location.href = apkUrl;
+    }, 1200);
+  }
+  // ถ้าไม่ใช่ Android (เช่น iOS/PC) ปล่อยให้ลิงก์ทำงานปกติ
+});
+</script>
     
 <footer>
 
